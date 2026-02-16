@@ -62,9 +62,18 @@ kubectl get deployments -n kserve
 ```
 
 ## 📂 Project Structure
-- `kserve-raw-operator/`: The custom operator project.
-- `manual-deployment/`: Manual Helm charts and manifests.
-- `docs/`: Step-by-step guides and implementation plans.
+- `kserve-raw-operator/`: The main operator project for standard environments.
+- `kserve-raw-operator-ag/`: **Developer Air-Gapped Bundle**. Contains local build tools (Go, Kustomize, Operator-SDK) and a mirroring script for transitioning to an offline registry.
+- `kserve-raw-operator-ag-customer/`: **Customer Final Package**. A zero-build bundle with pre-rendered manifests, complete container image tars, and image loading scripts.
+- `manual-deployment/`: Manual Helm charts and manifests for debugging.
+- `docs/`: Specialized guides (Air-Gap, Setup, and Walkthroughs).
+
+## 🏙️ Air-Gapped Deployment
+The repository supports full offline installation for high-security environments:
+- **Developer Flow**: Use `kserve-raw-operator-ag` if you need to build/modify the operator offline using the included local Go toolchain.
+- **Customer Flow**: Ship the `kserve-raw-operator-bundle-customer.zip` (generated from `kserve-raw-operator-ag-customer`) for pre-rendered, single-command installation.
+
+Refer to **[Air-Gap-Setup-Guide.md](kserve-raw-operator-ag/Air-Gap-Setup-Guide.md)** or **[Customer-Deployment-Guide.md](kserve-raw-operator-ag-customer/Customer-Deployment-Guide.md)** for details.
 
 ## ⚠️ Troubleshooting
 ### OLM SchemaError
