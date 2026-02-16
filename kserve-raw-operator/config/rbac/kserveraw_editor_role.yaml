@@ -1,0 +1,31 @@
+# permissions for end users to edit kserveraws.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: kserveraw-editor-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: kserve-raw-operator
+    app.kubernetes.io/part-of: kserve-raw-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: kserveraw-editor-role
+rules:
+- apiGroups:
+  - serving.kserve.io
+  resources:
+  - kserveraws
+  verbs:
+  - create
+  - delete
+  - get
+  - list
+  - patch
+  - update
+  - watch
+- apiGroups:
+  - serving.kserve.io
+  resources:
+  - kserveraws/status
+  verbs:
+  - get

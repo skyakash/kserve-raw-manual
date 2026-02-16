@@ -1,0 +1,27 @@
+Yes, for a "Raw Deployment" of KServe (without Istio and Knative), there isn't a separate operator project. Instead, the standard KServe Operator itself is designed to support both Serverless (Knative) and Raw (Standard K8s) modes natively.
+
+The reason we performed manual modifications is that the "Raw" mode is often treated as a configuration option of the main operator rather than a distinct installation package. Here is how you can achieve this using existing operator-based methods:
+
+1. KServe Helm Chart (Recommended)
+The Helm chart we used is the official way to deploy the KServe operator. While we manually edited files for your specific local setup, the "official" way to do this in a single command using the operator's chart is:
+
+bash
+helm install kserve kserve-charts/kserve \
+  --set kserve.controller.deploymentMode=RawDeployment \
+  --set kserve.controller.gateway.disabled=true \
+  --set kserve.controller.knative.disabled=true
+Note: This still requires cert-manager to be present for the webhooks, just like we did.
+
+2. KServe Operator via OLM (Operator Lifecycle Manager)
+If you are using OperatorHub.io or a cluster with OLM (like OpenShift), you can install the "KServe" operator. After installation, you configure the inferenceservice-config ConfigMap (which the operator watches) to set defaultDeploymentMode: RawDeployment.
+
+Why there isn't a "Raw-Only" Operator
+KServe's philosophy is to have a single controller-manager that can reconcile both types of resources. The "Raw" mode simply tells the controller to create standard Kubernetes Deployments, Services, and HPAs instead of Knative Services.
+
+Summary of options for your next project:
+Feature	KServe Operator (Standard)	Our Manual "Raw" Setup
+Knative/Istio	Optional (can be disabled)	Removed
+Cert-Manager	Required (for webhooks)	Included
+Installation	OLM or Helm	Local Helm + Fixes
+Deadlock Fix	Requires manual logic	Automated in our guide
+In short: You are already using the "available operator" (the KServe Go operator). The manual steps we documented are essentially the process of configuring that operator to run in its "Raw" personality while working around the common "chicken-and-egg" webhook deadlock found in local environments.

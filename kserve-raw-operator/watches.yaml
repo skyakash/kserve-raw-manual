@@ -1,0 +1,10 @@
+# Use the 'create api' subcommand to add watches to this file.
+- group: serving.kserve.io
+  version: v1alpha1
+  kind: KServeRaw
+  chart: helm-charts/kserve
+  disableValidation: true
+  overrideValues:
+    kserve.controller.deploymentMode: RawDeployment
+    kserve.controller.gateway.disableIstioVirtualHost: "true"
+#+kubebuilder:scaffold:watch

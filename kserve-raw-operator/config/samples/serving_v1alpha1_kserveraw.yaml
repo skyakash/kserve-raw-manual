@@ -1,0 +1,10 @@
+apiVersion: serving.kserve.io/v1alpha1
+kind: KServeRaw
+metadata:
+  name: kserve-raw
+spec:
+  # The operator is configured via watches.yaml to use RawDeployment mode by default.
+  # You can add additional Helm overrides here if needed.
+  kserve:
+    controller:
+      deploymentMode: RawDeployment
