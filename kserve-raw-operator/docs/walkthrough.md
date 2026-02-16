@@ -34,6 +34,13 @@ The operator successfully reconciled the `KServeRaw` resource, deploying the KSe
 ### 6. Configuration Validation
 Verified that `defaultDeploymentMode` is set to `RawDeployment`.
 
+### 7. Final Customer Bundle
+Generated a 13GB+ self-contained bundle for customer delivery:
+- **ZIP File**: `kserve-raw-operator-bundle-customer.zip`
+- **Tars Captured**: 24/26 primary KServe and dependency images.
+- **Tools**: Includes full Go toolchain and binaries.
+- **Manifests**: Pre-rendered `operator-install.yaml` for zero-build deployment.
+
 ```bash
 kubectl get cm -n kserve inferenceservice-config -o jsonpath='{.data.deploy}' | grep defaultDeploymentMode
 # Output: "defaultDeploymentMode": "RawDeployment"
