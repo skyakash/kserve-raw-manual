@@ -1,0 +1,24 @@
+apiVersion: v1
+kind: Namespace
+metadata:
+  name: kserve
+---
+apiVersion: operators.coreos.com/v1
+kind: OperatorGroup
+metadata:
+  name: kserve-operatorgroup
+  namespace: kserve
+spec:
+  targetNamespaces:
+    - kserve
+---
+apiVersion: operators.coreos.com/v1alpha1
+kind: Subscription
+metadata:
+  name: kserve-operator
+  namespace: kserve
+spec:
+  channel: stable
+  name: kserve-operator
+  source: operatorhubio-catalog
+  sourceNamespace: olm

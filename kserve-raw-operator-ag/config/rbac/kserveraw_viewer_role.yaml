@@ -1,0 +1,27 @@
+# permissions for end users to view kserveraws.
+apiVersion: rbac.authorization.k8s.io/v1
+kind: ClusterRole
+metadata:
+  labels:
+    app.kubernetes.io/name: clusterrole
+    app.kubernetes.io/instance: kserveraw-viewer-role
+    app.kubernetes.io/component: rbac
+    app.kubernetes.io/created-by: kserve-raw-operator
+    app.kubernetes.io/part-of: kserve-raw-operator
+    app.kubernetes.io/managed-by: kustomize
+  name: kserveraw-viewer-role
+rules:
+- apiGroups:
+  - serving.kserve.io
+  resources:
+  - kserveraws
+  verbs:
+  - get
+  - list
+  - watch
+- apiGroups:
+  - serving.kserve.io
+  resources:
+  - kserveraws/status
+  verbs:
+  - get

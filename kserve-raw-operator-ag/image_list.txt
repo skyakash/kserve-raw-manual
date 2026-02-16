@@ -1,0 +1,33 @@
+# KServe Operator & Dependencies
+akashneha/kserve-raw-operator:v0.1.0
+kserve/kserve-controller:v0.16.0
+kserve/agent:v0.16.0
+kserve/router:v0.16.0
+kserve/storage-initializer:v0.16.0
+kserve/sklearnserver:v0.16.0
+kserve/xgbserver:v0.16.0
+kserve/lgbserver:v0.16.0
+kserve/pmmlserver:v0.16.0
+kserve/paddleserver:v0.16.0
+kserve/huggingfaceserver:v0.16.0
+kserve/art-explainer:v0.16.0
+kserve/kserve-localmodel-controller:v0.16.0
+kserve/kserve-localmodelnode-agent:v0.16.0
+
+# Sidecars & Runtimes
+quay.io/brancz/kube-rbac-proxy:v0.18.0
+gcr.io/kubebuilder/kube-rbac-proxy:v0.14.1
+docker.io/seldonio/mlserver:1.5.0
+tensorflow/serving:2.6.2
+pytorch/torchserve-kfs:0.9.0
+nvcr.io/nvidia/tritonserver:23.05-py3
+
+# OLM Components
+quay.io/operator-framework/olm:v0.28.0
+quay.io/operator-framework/catalog:v0.28.0
+quay.io/operator-framework/package-server:v0.28.0
+
+# Cert-Manager Components
+quay.io/jetstack/cert-manager-controller:v1.17.0
+quay.io/jetstack/cert-manager-webhook:v1.17.0
+quay.io/jetstack/cert-manager-cainjector:v1.17.0

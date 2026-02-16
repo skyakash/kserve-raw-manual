@@ -1,0 +1,14 @@
+- [x] Analyze reset cluster <!-- id: 21 -->
+- [x] Research KServe Operator availability <!-- id: 13 -->
+- [x] Install OLM on the cluster <!-- id: 14 -->
+- [x] Install Cert-Manager (as dependency) <!-- id: 15 -->
+- [x] Design and Implement Custom KServe Raw Operator <!-- id: 22 -->
+    - [x] Scaffold operator using operator-sdk <!-- id: 23 -->
+    - [x] Configure Helm charts and overrides <!-- id: 24 -->
+    - [x] Debug and Fix reconcile issues (OLM SchemaError) <!-- id: 27 -->
+- [x] Create CRD and Sample CR <!-- id: 25 -->
+- [x] Verify deployment with Sample ISVC <!-- id: 18 -->
+- [x] Build and Deploy Operator Image <!-- id: 26 -->
+- [x] Publish Operator Image to Docker Hub <!-- id: 28 -->
+- [x] Create Operator Guide in `kserve-raw-operator` <!-- id: 19 -->
+- [x] Organize files in `kserve-raw-operator` <!-- id: 20 -->
